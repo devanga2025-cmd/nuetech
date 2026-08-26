@@ -31,9 +31,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-vfc@3lvo!p_%w&*1#gh7e3_+chn5^=3zmdf0-&0o%-103x1bh7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.getenv('DEBUG', 'True').lower() in ('true', '1', 't')
 
-ALLOWED_HOSTS = ['.vercel.app','127.0.0.1','now.sh']
+ALLOWED_HOSTS = ['*', '127.0.0.1', 'localhost',]
 
 
 # Application definition
@@ -67,6 +67,13 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+try:
+    import whitenoise
+    MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+except ImportError:
+    pass
+
 ROOT_URLCONF = 'config.urls'
 
 TEMPLATES = [
@@ -87,40 +94,15 @@ TEMPLATES = [
 WSGI_APPLICATION = 'config.wsgi.application'
 
 
-import urllib.parse
-
 # Database
-# Support PostgreSQL (Railway / Production / Public TCP Proxy) or SQLite for local dev
-DATABASE_URL = os.getenv('DATABASE_URL', '').strip()
-DB_HOST = os.getenv('DB_HOST', '').strip()
-USE_POSTGRES = os.getenv('USE_POSTGRES', '').lower() in ('true', '1') or os.getenv('RAILWAY_ENVIRONMENT') or os.getenv('VERCEL')
+# https://docs.djangoproject.com/en/6.1/ref/settings/#databases
 
-if DATABASE_URL and 'postgres.railway.internal' not in DATABASE_URL:
-    clean_url = DATABASE_URL
-    if 'postgresql://' in clean_url:
-        clean_url = 'postgresql://' + clean_url.split('postgresql://')[-1]
-    url = urllib.parse.urlparse(clean_url)
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': url.path or os.getenv('DB_NAME', 'railway'),
-            'USER': url.username or os.getenv('DB_USER', 'postgres'),
-            'PASSWORD': url.password or os.getenv('DB_PASSWORD', 'XLBkgBxtDDjUWLXPDixZPYUZXUGBkkcl'),
-            'HOST': url.hostname or os.getenv('DB_HOST', 'tokaido.proxy.rlwy.net'),
-            'PORT': url.port or int(os.getenv('DB_PORT', '56658')),
-        }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
-elif USE_POSTGRES or (DB_HOST and DB_HOST != 'postgres.railway.internal'):
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.getenv('DB_NAME', 'railway'),
-            'USER': os.getenv('DB_USER', 'postgres'),
-            'PASSWORD': os.getenv('DB_PASSWORD', 'XLBkgBxtDDjUWLXPDixZPYUZXUGBkkcl'),
-            'HOST': DB_HOST or 'postgres.railway.internal',
-            'PORT': os.getenv('DB_PORT', '5432'),
-        }
-    }
+}
 
 
 # Password validation
@@ -160,7 +142,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
-    os.path.join(BASE_DIR, 'assents'),
     ('assents', os.path.join(BASE_DIR, 'assents')),
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
