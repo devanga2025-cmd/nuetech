@@ -1,0 +1,165 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuetech Solar - Products</title>
+    <link rel="stylesheet" href="{% static 'css/navigation.css' %}">
+    <link rel="stylesheet" href="{% static 'css/product/product.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    {% include 'navigation.html' %}
+
+    <section class="products-hero-wrapper">
+        
+        <!-- BACKGROUND IMAGE (Replace 'products-bg.jpg' with your actual image file) -->
+        <img src="{% static 'assents/hero_home_page.png' %}" alt="Solar Panels Sunset" class="products-bg-image">
+
+        <!-- Dark Gradient Overlay for Text Readability -->
+        <div class="products-overlay"></div>
+
+        <!-- Main Content -->
+        <div class="products-hero-content">
+            
+            <div class="products-text-area">
+                <h4 class="products-subheading">OUR PRODUCTS</h4>
+                <h1 class="products-main-heading">
+                    Advanced Solar Products <br>
+                    <span class="highlight-text">Built for Performance</span>
+                </h1>
+                <p class="products-description">
+                    High-quality, reliable, and efficient solar products designed to deliver maximum energy and long-term savings.
+                </p>
+            </div>
+
+            <!-- Product Category Pills -->
+            <div class="product-pills-bar">
+                
+                <a href="{% url 'product' %}" class="product-pill active">
+                    <i class="fas fa-solar-panel"></i>
+                    <span>Solar Panels</span>
+                </a>
+
+                <a href="{% url 'product' %}" class="product-pill">
+                    <i class="fas fa-microchip"></i>
+                    <span>Inverters</span>
+                </a>
+
+                <a href="{% url 'product' %}" class="product-pill">
+                    <i class="fas fa-battery-full"></i>
+                    <span>Batteries</span>
+                </a>
+
+                <a href="{% url 'product' %}" class="product-pill">
+                    <i class="fas fa-plug"></i>
+                    <span>Accessories</span>
+                </a>
+
+                <a href="{% url 'product' %}" class="product-pill">
+                    <i class="fas fa-lightbulb"></i>
+                    <span>Street Lights</span>
+                </a>
+
+            </div>
+
+        </div>
+    </section>
+
+<!-- ========================================== -->
+<!--        EXPLORE OUR PRODUCTS SECTION         -->
+<!-- ========================================== -->
+<section class="products-section">
+    <div class="container">
+        <h4 class="section-subtitle text-green">EXPLORE OUR PRODUCTS</h4>
+        
+        <div class="products-grid">
+            {% for product in products %}
+            <div class="product-card">
+                <div class="product-img-wrapper">
+                    {% if product.image %}
+                    <img src="{{ product.image.url }}" alt="{{ product.title }}">
+                    {% else %}
+                    <img src="{% static 'assents/home_page_image.png' %}" alt="{{ product.title }}">
+                    {% endif %}
+                </div>
+                
+                <div class="product-card-content">
+                    <h3 class="product-title">{{ product.title }}</h3>
+                    <p class="product-desc">{{ product.short_description }}</p>
+                    
+                    <ul class="product-features">
+                        {% for feature in product.get_features_list %}
+                        <li>
+                            <i class="fas fa-check-circle"></i> {{ feature }}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    
+                    <a href="{% url 'contact' %}" class="btn product-btn">View Details &rarr;</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+        <!-- ========================================== -->
+    <!--        HELP CHOOSING PRODUCT BANNER         -->
+    <!-- ========================================== -->
+    <section class="help-banner-section">
+        <div class="help-container">
+            
+            <!-- Left Side: Text & Button -->
+            <div class="help-text-col">
+                <h2 class="help-title">Need Help Choosing the Right Product?</h2>
+                <p class="help-desc">
+                    Our experts are here to help you find the perfect solar solution that fits your needs and budget.
+                </p>
+                <a href="{% url 'about' %}" class="btn help-btn">Talk to an Expert <i class="fas fa-chevron-right"></i></a>
+            </div>
+
+            <!-- Right Side: Features -->
+            <div class="help-features-col">
+                
+                <div class="help-feature">
+                    <div class="help-feature-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h4>Custom Solutions</h4>
+                    <p>Tailored to your needs</p>
+                </div>
+
+                <div class="help-feature">
+                    <div class="help-feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4>Best Quality</h4>
+                    <p>Products you can trust</p>
+                </div>
+
+                <div class="help-feature">
+                    <div class="help-feature-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <h4>Expert Guidance</h4>
+                    <p>From start to finish</p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    {% include 'footer.html' %}
+    <script src="{% static 'js/navigation.js' %}"></script>
+    <script src="{% static 'js/product/product.js' %}"></script>
+    <script src="{% static 'js/footer.js' %}"></script>
+</body>
+</html>

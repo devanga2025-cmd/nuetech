@@ -1,0 +1,195 @@
+ {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Portfolio - Nuetech Solar</title>
+   
+    <link rel="stylesheet" href="{% static 'css/navigation.css' %}">
+    <link rel="stylesheet" href="{% static 'css/portfolio/portfolio.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+     {% include 'navigation.html' %}
+
+    <section class="portfolio-hero-wrapper">
+        
+        <!-- BACKGROUND IMAGE (Replace 'portfolio-bg.jpg' with your actual image file) -->
+        <img src="{% static 'portfolio_hero.png' %}" alt="Modern House with Solar Panels at Dusk" class="portfolio-bg-image">
+
+        <!-- Dark Gradient Overlay for Text Readability -->
+        <div class="portfolio-overlay"></div>
+
+        <!-- Main Content -->
+        <div class="portfolio-content">
+            
+            <div class="portfolio-text-area">
+                <h4 class="portfolio-subheading">OUR PORTFOLIO</h4>
+                <h1 class="portfolio-main-heading">
+                    Building a Sustainable <br> Future, <span class="highlight-text">One Project</span> <br> at a Time
+                </h1>
+                <p class="portfolio-description">
+                    From residential rooftops to large-scale commercial installations, our projects reflect our commitment to quality, innovation, and a cleaner planet.
+                </p>
+            </div>
+
+            <!-- Floating Stats Bar -->
+            <div class="portfolio-stats-bar">
+                
+                <div class="stat-item">
+                    <div class="stat-icon"><i class="fas fa-flask"></i></div>
+                    <div class="stat-text">
+                        <h3>500+</h3>
+                        <p>Projects Completed</p>
+                    </div>
+                </div>
+
+                <div class="stat-divider"></div>
+
+                <div class="stat-item">
+                    <div class="stat-icon"><i class="fas fa-users"></i></div>
+                    <div class="stat-text">
+                        <h3>250+</h3>
+                        <p>Happy Clients</p>
+                    </div>
+                </div>
+
+                <div class="stat-divider"></div>
+
+                <div class="stat-item">
+                    <div class="stat-icon"><i class="fas fa-bullseye"></i></div>
+                    <div class="stat-text">
+                        <h3>50+</h3>
+                        <p>Cities Covered</p>
+                    </div>
+                </div>
+
+                <div class="stat-divider"></div>
+
+                <div class="stat-item">
+                    <div class="stat-icon"><i class="fas fa-chart-line"></i></div>
+                    <div class="stat-text">
+                        <h3>120+</h3>
+                        <p>MW Installed Capacity</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+    <!-- ========================================== -->
+<!--      FOUNDER'S VISION SECTION               -->
+<!-- ========================================== -->
+<section class="founder-vision-section">
+    <div class="container">
+        {% if founder_vision %}
+        <div class="founder-layout">
+            <div class="founder-text-col">
+                <h4 class="section-subtitle text-green">OUR FOUNDER'S VISION</h4>
+                <h2 class="founder-heading">
+                    {{ founder_vision.heading_prefix }} <br> 
+                    <span class="highlight-text">{{ founder_vision.heading_highlight }}</span>
+                </h2>
+                
+                <p class="founder-desc">{{ founder_vision.paragraph_1 }}</p>
+                <p class="founder-desc">{{ founder_vision.paragraph_2 }}</p>
+                
+                <!-- Hardcoded Link -->
+                <a href="{% url 'about' %}" class="btn-green"> {{ founder_vision.button_text }} &rarr;</a>
+            </div>
+            
+            <div class="founder-image-col">
+                <div class="founder-image-wrapper">
+                    <img src="{{ founder_vision.founder_image.url }}" alt="Founder Image">
+                </div>
+                <div class="founder-quote-box">
+                    <i class="fas fa-quote-left quote-icon"></i>
+                    <p class="quote-text">{{ founder_vision.quote_text }}</p>
+                    <div class="quote-author">
+                        <p class="author-name">- {{ founder_vision.quote_author }}</p>
+                        <p class="author-title">{{ founder_vision.quote_author_title }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+<!-- ========================================== -->
+<!--      FEATURED PROJECTS SECTION              -->
+<!-- ========================================== -->
+<section class="featured-projects-section">
+    <div class="container">
+        <h4 class="section-subtitle text-green">FEATURED PROJECTS</h4>
+        <div class="section-header-row">
+            <h2 class="section-title text-black">Powering Progress Across Sectors</h2>
+            <!-- Hardcoded Link -->
+            <a href="{% url 'product' %}" class="btn-outline">View All Projects &rarr;</a>
+        </div>
+        
+        <div class="projects-grid">
+            {% for project in featured_projects %}
+            <div class="project-card">
+                <div class="project-img-wrapper">
+                    <img src="{{ project.project_image.url }}" alt="{{ project.title }}">
+                    <span class="project-category">{{ project.category }}</span>
+                </div>
+                <div class="project-card-content">
+                    <h3 class="project-title">{{ project.title }}</h3>
+                    <p class="project-location">{{ project.location }}</p>
+                    
+                    <div class="project-stats">
+                        <div class="project-stat">
+                            <i class="fas fa-bolt"></i>
+                            <div>
+                                <h4>{{ project.capacity }}</h4>
+                                <p>{{ project.capacity_label }}</p>
+                            </div>
+                        </div>
+                        <div class="project-stat">
+                            <i class="fas fa-calendar-alt"></i>
+                            <div>
+                                <h4>{{ project.year }}</h4>
+                                <p>{{ project.year_label }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+    <!-- ========================================== -->
+    <!--   HAVE A PROJECT IN MIND CTA BANNER         -->
+    <!-- ========================================== -->
+    <section class="project-cta-section">
+        <div class="project-cta-container">
+            
+            <div class="project-cta-text">
+                <h2>Have a Project in Mind?</h2>
+                <p>Let's build something great together.</p>
+            </div>
+
+            <div class="project-cta-action">
+                <a href="#" class="btn-green project-cta-btn">Discuss Your Project <i class="fas fa-chevron-right"></i></a>
+            </div>
+
+        </div>
+    </section>
+     {% include 'footer.html' %}
+    <script src="{% static 'js/navigation.js' %}"></script>
+    <script src="{% static 'js/portfolio/portfolio.js' %}"></script>
+    <script src="{% static 'js/footer.js' %}"></script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,185 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuetech Solar</title>
+    <link rel="stylesheet" href="{% static 'css/navigation.css' %}">
+    <link rel="stylesheet" href="{% static 'css/home/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    {% include 'navigation.html' %}
+
+    <main>
+        <section class="hero-wrapper">
+            <img src="{% static 'assents/hero_home_page.png' %}" alt="Solar Panels Sunset" class="hero-bg-image">
+            <div class="hero-content">
+                <div class="hero-top-section">
+                    <h4 class="sub-heading">POWERING A SUSTAINABLE FUTURE</h4>
+                    <h1 class="main-heading">Smart Solar Solutions <br> for a <span class="highlight-text">Brighter Tomorrow</span></h1>
+                    <p class="hero-description">Nuetech Solar delivers innovative, reliable, and efficient solar energy solutions for homes, businesses, and industries.</p>
+                    <div class="hero-buttons">
+                        <a href="{% url 'product' %}" class="btn btn-primary">Explore Products <i class="fas fa-chevron-right"></i></a>
+                        <a href="{% url 'services' %}" class="btn btn-secondary">Our Services <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+                 <!-- Features Boxes -->
+            <div class="features-grid">
+                <div class="feature-box">
+                    <div class="feature-icon"><i class="fas fa-leaf"></i></div>
+                    <div class="feature-text">
+                        <h3>Clean Energy</h3>
+                        <p>Eco-friendly & sustainable solar power.</p>
+                    </div>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                    <div class="feature-text">
+                        <h3>Reliable Systems</h3>
+                        <p>High-performance systems built to last.</p>
+                    </div>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon"><i class="fas fa-dollar-sign"></i></div>
+                    <div class="feature-text">
+                        <h3>Cost Savings</h3>
+                        <p>Reduce electricity bills with solar energy.</p>
+                    </div>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon"><i class="fas fa-headset"></i></div>
+                    <div class="feature-text">
+                        <h3>Expert Support</h3>
+                        <p>End-to-end support from our solar experts.</p>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="stats-section">
+            <div class="stat-item">
+                <div class="stat-icon"><i class="fas fa-solar-panel"></i></div>
+                <h2 class="stat-number">500+</h2>
+                <p class="stat-label">Projects Completed</p>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon"><i class="fas fa-users"></i></div>
+                <h2 class="stat-number">250+</h2>
+                <p class="stat-label">Happy Clients</p>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon"><i class="fas fa-award"></i></div>
+                <h2 class="stat-number">10+</h2>
+                <p class="stat-label">Years of Experience</p>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon"><i class="fas fa-seedling"></i></div>
+                <h2 class="stat-number">100%</h2>
+                <p class="stat-label">Clean Energy</p>
+            </div>
+        </section>
+
+        <section class="about-us-section">
+            <div class="about-container">
+                <div class="about-image-wrapper">
+                    <img src="{% static 'assents/home_page_image.png' %}" alt="Modern house with solar panels" class="about-img">
+                </div>
+                <div class="about-content">
+                    <h4 class="about-subheading">ABOUT US</h4>
+                    <h2 class="about-heading">Energy for <span class="highlight-text">Changing World</span></h2>
+                    <p class="about-description">Nuetech Solar is committed to providing high-quality solar solutions that help reduce carbon footprint and build a sustainable future. Our advanced technology and expert team ensure maximum efficiency and long-term savings.</p>
+                    <div class="about-features">
+                        <div class="about-feature-item"><div class="about-icon-box"><i class="fas fa-recycle"></i></div><div class="about-feature-text"><h4>Sustainable Solutions</h4><p>Environmentally responsible solar energy systems.</p></div></div>
+                        <div class="about-feature-item"><div class="about-icon-box"><i class="fas fa-medal"></i></div><div class="about-feature-text"><h4>Advanced Technology</h4><p>Cutting-edge technology for maximum efficiency.</p></div></div>
+                        <div class="about-feature-item"><div class="about-icon-box"><i class="fas fa-check-circle"></i></div><div class="about-feature-text"><h4>Customer First</h4><p>Reliable service and support you can always count on.</p></div></div>
+                    </div>
+                    <a href="{% url 'about' %}" class="btn about-btn">Know More About Us <i class="fas fa-chevron-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <section class="solutions-section bg-dark">
+            <div class="container">
+                <h4 class="section-subtitle text-green">OUR SOLUTIONS</h4>
+                <h2 class="section-title text-white">Powering Every Need</h2>
+                <div class="cards-grid">
+                    {% for solution in solutions %}
+                    <div class="solution-card">
+                        <div class="card-img-wrapper">
+                            {% if solution.image %}
+                                <img src="{{ solution.image.url }}" alt="{{ solution.title }}">
+                            {% else %}
+                                <img src="{% static 'assents/hero_home_page.png' %}" alt="{{ solution.title }}">
+                            {% endif %}
+                        </div>
+                        <div class="card-content">
+                            
+                            <h3 class="card-title">{{ solution.title }}</h3>
+                            <p class="card-desc">{{ solution.description }}</p>
+                            <a href="{% url 'about' %}" class="learn-more-link">Learn More &rarr;</a>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <p>No solutions have been added yet.</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+        <section class="news-section bg-light">
+            <div class="container">
+                <div class="section-header-row">
+                    <div class="header-text">
+                        <h4 class="section-subtitle text-green">LATEST FROM MEDIA</h4>
+                        <h2 class="section-title text-black">News & Updates</h2>
+                    </div>
+                    <a href="#" class="btn-outline">View All News &rarr;</a>
+                </div>
+                <div class="cards-grid">
+                    {% for news in news_updates %}
+                    <div class="news-card">
+                        <div class="card-img-wrapper">
+                            {% if news.image %}
+                                <img src="{{ news.image.url }}" alt="{{ news.title }}">
+                            {% else %}
+                                <img src="{% static 'assents/home_page_image.png' %}" alt="{{ news.title }}">
+                            {% endif %}
+                        </div>
+                        <div class="card-content">
+                            <div class="news-date"><span class="day">{{ news.date|date:"d" }}</span><span class="month">{{ news.date|date:"M" }}</span></div>
+                            <h3 class="card-title">{{ news.title }}</h3>
+                            <p class="card-desc">{{ news.excerpt }}</p>
+                            <a href="{% url 'gallery' %}" class="learn-more-link">Read More &rarr;</a>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <p>No news updates have been added yet.</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-banner-section">
+            <div class="cta-container">
+                <div class="cta-content">
+                    <h2 class="cta-title">Ready to Switch to Solar?</h2>
+                    <p class="cta-description">Get in touch with our experts and start your journey towards clean and cost-effective energy.</p>
+                </div>
+                <div class="cta-action">
+                    <a href="{% url 'quote' %}" class="btn cta-btn">Get a Free Quote <i class="fas fa-chevron-right"></i></a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    {% include 'footer.html' %}
+    <script src="{% static 'js/navigation.js' %}"></script>
+    <script src="{% static 'js/home/home.js' %}"></script>
+    <script src="{% static 'js/footer.js' %}"></script>
+</body>
+</html>

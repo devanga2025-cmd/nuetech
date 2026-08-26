@@ -1,0 +1,466 @@
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #021018; /* Fallback color */
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+/* Hero Wrapper */
+.hero-about-wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 100vh; /* Full screen height */
+    display: flex;
+    align-items: center; /* Vertically center content */
+    padding: 0 60px;
+    overflow: hidden;
+}
+
+/* Background Image Tag */
+.hero-bg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+/* Dark Gradient Overlay (to make text pop) */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Stronger dark gradient on the left, fading to transparent on the right */
+    background: linear-gradient(to right, rgba(2, 16, 24, 0.95) 30%, rgba(2, 16, 24, 0.3) 100%);
+    z-index: 1;
+}
+
+/* Content Container */
+.hero-about-content {
+    position: relative;
+    z-index: 2; /* Sit above image and overlay */
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 50px;
+}
+
+/* Text Area */
+.hero-text-area {
+    max-width: 650px;
+}
+
+.sub-heading {
+    color: #7ed321;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.main-heading {
+    font-size: 54px;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 25px;
+}
+
+.highlight-text {
+    color: #7ed321;
+}
+
+.hero-description {
+    font-size: 17px;
+    line-height: 1.6;
+    color: #d0d5d9;
+}
+
+/* Floating Stats Bar */
+.stats-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(2, 16, 24, 0.65); /* Glassmorphism effect */
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(8px); /* Blur behind */
+    border-radius: 12px;
+    padding: 30px 40px;
+    max-width: 950px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.stat-icon {
+    color: #7ed321;
+    font-size: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+}
+
+.stat-text h3 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.stat-text p {
+    font-size: 13px;
+    color: #9aa5ad;
+    font-weight: 400;
+}
+
+.stat-divider {
+    width: 1px;
+    height: 35px;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .hero-about-wrapper {
+        min-height: auto;
+        padding: 40px 30px;
+    }
+    .main-heading {
+        font-size: 42px;
+    }
+    .stats-bar {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        padding: 25px 30px;
+    }
+    .stat-divider {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-about-wrapper {
+        padding: 30px 20px;
+    }
+    .main-heading {
+        font-size: 32px;
+        line-height: 1.25;
+    }
+    .hero-description {
+        font-size: 15px;
+    }
+    .stats-bar {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        padding: 20px;
+    }
+    .stat-item {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-heading {
+        font-size: 26px;
+    }
+    .stats-bar {
+        grid-template-columns: 1fr;
+        padding: 18px;
+    }
+}
+/* ========================================== */
+/*           WHO WE ARE SECTION CSS            */
+/* ========================================== */
+
+.who-we-are-section {
+    background-color: #f7f9fc; /* Light gray/white background */
+    padding: 80px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.who-container {
+    max-width: 1250px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+
+/* Left Side: Image */
+.who-image-wrapper {
+    flex: 1;
+    width: 100%;
+}
+
+.who-img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px; /* Rounded corners on the building image */
+    object-fit: cover;
+    display: block;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08); /* Soft drop shadow */
+}
+
+/* Right Side: Content */
+.who-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.who-subheading {
+    color: #6cb91c;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.who-heading {
+    font-size: 38px;
+    font-weight: 800;
+    color: #111111;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.who-description {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #555555;
+    margin-bottom: 25px;
+}
+
+/* Checkmark List */
+.who-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.who-list li {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333333;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.who-list li i {
+    color: #6cb91c; /* Bright Green */
+    font-size: 20px;
+}
+
+/* Responsive layout for "Who We Are" Section */
+@media (max-width: 992px) {
+    .who-container {
+        flex-direction: column;
+        gap: 40px;
+    }
+    
+    .who-image-wrapper,
+    .who-content {
+        width: 100%;
+        flex: none;
+    }
+
+    .who-heading {
+        font-size: 30px;
+    }
+}
+/* ========================================== */
+/*   MISSION & VISION SECTION CSS              */
+/* ========================================== */
+
+.mission-vision-section {
+    background-color: #021018; /* Deep dark background */
+    padding: 80px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.mission-vision-container {
+    max-width: 1250px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mission-vision-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 40px;
+    width: 100%;
+    margin-top: 30px;
+}
+
+/* Text Columns (Left and Right) */
+.mv-text-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+}
+
+.mv-icon-circle {
+    width: 60px;
+    height: 60px;
+    background-color: #3d6b31; /* Dark Green Background for icons */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.mv-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.mv-desc {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #b0b8bd;
+    max-width: 350px;
+}
+
+/* Center Image Column */
+.mv-image-col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mv-center-img {
+    width: 100%;
+    max-width: 400px; /* Adjust this based on the actual size of your image */
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
+
+
+/* ========================================== */
+/*   WHY CHOOSE NUETECH SOLAR SECTION CSS      */
+/* ========================================== */
+
+.why-choose-section {
+    background-color: #ffffff;
+    padding: 80px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.why-container {
+    max-width: 1250px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.why-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    margin-top: 30px;
+    width: 100%;
+}
+
+.why-card {
+    background-color: #ffffff;
+    border: 1px solid #eaeaea;
+    border-radius: 12px;
+    padding: 35px 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.why-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.why-icon {
+    color: #6cb91c;
+    font-size: 32px;
+    margin-bottom: 20px;
+    background: #f0f8e8; /* Very light green circle background */
+    width: 55px;
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.why-card h4 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #111111;
+    margin-bottom: 10px;
+}
+
+.why-card p {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #666666;
+    margin: 0;
+}
+
+/* Responsive Layout */
+@media (max-width: 1024px) {
+    .mission-vision-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+    .mv-image-col {
+        order: -1; /* Puts the image on top on mobile/tablets */
+    }
+    .mv-center-img {
+        max-width: 300px;
+    }
+    
+    .why-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .why-grid {
+        grid-template-columns: 1fr;
+    }
+}

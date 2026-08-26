@@ -1,0 +1,203 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Center - Nuetech Solar</title>
+    
+     <link rel="stylesheet" href="{% static 'css/navigation.css' %}">
+    <link rel="stylesheet" href="{% static 'css/gallery/gallery.css' %}">
+     <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    {% include 'navigation.html' %}
+
+    <section class="media-hero-wrapper">
+        
+        <!-- BACKGROUND IMAGE (Replace 'media-bg.jpg' with your actual image file) -->
+        <img src="{% static 'galler_hero_section.png' %}" alt="Solar Panels at Sunset" class="media-bg-image">
+
+        <!-- Dark Gradient Overlay for Text Readability -->
+        <div class="media-overlay"></div>
+
+        <!-- Main Content -->
+        <div class="media-content">
+            
+            <div class="media-text-area">
+                <h4 class="media-subheading">MEDIA CENTER</h4>
+                <h1 class="media-main-heading">
+                    Stay Informed.<br>
+                    Stay <span class="highlight-text">Inspired.</span>
+                </h1>
+                <p class="media-description">
+                    Explore the latest news, updates, and insights from Nuetech Solar and the world of clean energy.
+                </p>
+
+                <!-- Breadcrumb -->
+                <div class="breadcrumb">
+                    <a href="/">Home</a> <span class="separator">›</span> <span class="current">Media</span>
+                </div>
+            </div>
+
+            <!-- Floating Stats Bar -->
+            <div class="media-stats-bar">
+                
+                <div class="stat-item">
+                    <div class="stat-icon"><i class="fas fa-newspaper"></i></div>
+                    <div class="stat-text">
+                        <h3>100+</h3>
+                        <p>News Articles</p>
+                    </div>
+                </div>
+
+                <div class="stat-divider"></div>
+
+                <div class="stat-item">
+                    <div class="stat-icon"><i class="fas fa-file-alt"></i></div>
+                    <div class="stat-text">
+                        <h3>50+</h3>
+                        <p>Press Releases</p>
+                    </div>
+                </div>
+
+                <div class="stat-divider"></div>
+
+                <div class="stat-item">
+                    <div class="stat-icon"><i class="fas fa-images"></i></div>
+                    <div class="stat-text">
+                        <h3>75+</h3>
+                        <p>Media Features</p>
+                    </div>
+                </div>
+
+                <div class="stat-divider"></div>
+
+                <div class="stat-item">
+                    <div class="stat-icon"><i class="fas fa-users"></i></div>
+                    <div class="stat-text">
+                        <h3>10K+</h3>
+                        <p>Happy Readers</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+    <!-- ========================================== -->
+<!--           MEDIA CENTER SECTION              -->
+<!-- ========================================== -->
+<section class="media-center-section">
+
+    <!-- LATEST NEWS SECTION -->
+    <div class="container">
+        <h4 class="section-subtitle text-green">LATEST NEWS</h4>
+        <div class="section-header-row">
+            <h2 class="section-title text-black">Powering a Sustainable Future</h2>
+            <!-- HARDCODED LINK -->
+           
+        </div>
+        
+        <div class="news-grid">
+            {% for news in latest_news %}
+            <div class="news-card">
+                <div class="news-card-img-wrapper">
+                    <img src="{{ news.image.url }}" alt="{{ news.title }}">
+                    <span class="news-category">{{ news.category }}</span>
+                </div>
+                <div class="news-card-content">
+                    <p class="news-date">{{ news.date|date:"F d, Y" }}</p>
+                    <h3 class="news-card-title">{{ news.title }}</h3>
+                    <p class="news-card-desc">{{ news.description }}</p>
+                    <!-- HARDCODED LINK -->
+                    <a href="/news-details/" class="read-more-link">Read More &rarr;</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- MEDIA GALLERY SECTION -->
+    <div class="media-gallery-wrapper">
+        <div class="container">
+            <div class="gallery-layout">
+                <!-- Left Text & Button -->
+                <div class="gallery-text-col">
+                    <h4 class="section-subtitle text-green">MEDIA GALLERY</h4>
+                    <h2 class="section-title text-white">Moments that<br>Drive Change</h2>
+                    <p class="gallery-desc">A glimpse of our events, projects, and initiatives that inspire a cleaner tomorrow.</p>
+                    <!-- HARDCODED LINK -->
+                    <a href="{% url 'gallery' %}" class="btn-green">View Full Gallery &rarr;</a>
+                </div>
+
+                <!-- Right Grid Images -->
+                <div class="gallery-grid">
+                    <!-- Main Large Image -->
+                    {% if gallery_main %}
+                    <a href="/full-gallery/" class="gallery-item gallery-main">
+                        <img src="{{ gallery_main.image.url }}" alt="Media Gallery">
+                    </a>
+                    {% endif %}
+
+                    <!-- Secondary Smaller Images -->
+                    <div class="gallery-secondary">
+                        {% for img in gallery_secondary %}
+                            {% if forloop.last %}
+                                <!-- Last Secondary Item with Overlay Text -->
+                                <a href="/full-gallery/" class="gallery-item gallery-small gallery-overlay">
+                                    <img src="{{ img.image.url }}" alt="Media Gallery">
+                                    <div class="gallery-overlay-text">
+                                        <h3>+25</h3>
+                                        <p>More Photos</p>
+                                    </div>
+                                </a>
+                            {% else %}
+                                <a href="/full-gallery/" class="gallery-item gallery-small">
+                                    <img src="{{ img.image.url }}" alt="Media Gallery">
+                                </a>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FEATURED VIDEOS SECTION -->
+    <div class="container">
+        <h4 class="section-subtitle text-green">FEATURED VIDEOS</h4>
+        <div class="section-header-row">
+            <h2 class="section-title text-black">Watch, Learn & Get Inspired</h2>
+            <!-- HARDCODED LINK -->
+            
+        </div>
+
+        <div class="videos-grid">
+            {% for video in featured_videos %}
+            <div class="video-card">
+                <div class="video-thumb-wrapper">
+                    <img src="{{ video.video_thumbnail.url }}" alt="{{ video.title }}">
+                    <!-- HARDCODED VIDEO LINK -->
+                    <a href="{{ video.url }}" class="video-play-btn">
+                        <i class="fas fa-play"></i>
+                    </a>
+                    <span class="video-duration">{{ video.duration }}</span>
+                </div>
+                <h3 class="video-title">{{ video.title }}</h3>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</section>
+        {% include 'footer.html' %}
+    <script src="{% static 'js/navigation.js' %}"></script>
+    <script src="{% static 'js/gallery/gallery.js' %}"></script>
+    <script src="{% static 'js/footer.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,192 @@
+  {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - Nuetech Solar</title>
+     <link rel="stylesheet" href="{% static 'css/navigation.css' %}">
+    <link rel="stylesheet" href="{% static 'css/services/services.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+     {% include 'navigation.html' %}
+    <section class="services-hero-wrapper">
+        
+        <!-- BACKGROUND IMAGE (Replace 'services-bg.jpg' with your actual image file) -->
+        <img src="{% static 'services_page.png' %}" alt="Solar Technicians Working on Panels" class="services-bg-image">
+
+        <!-- Dark Gradient Overlay for Text Readability -->
+        <div class="services-overlay"></div>
+
+        <!-- Main Content -->
+        <div class="services-content">
+            
+            <div class="services-text-area">
+                <h4 class="services-subheading">OUR SERVICES</h4>
+                <h1 class="services-main-heading">
+                    Complete Solar <br> Solutions for <span class="highlight-text">Every Need</span>
+                </h1>
+                <p class="services-description">
+                    From consultation to installation and maintenance, we provide end-to-end solar solutions with unmatched quality and reliability.
+                </p>
+
+                <!-- Breadcrumb -->
+                <div class="breadcrumb">
+                    <a href="/">Home</a> <span class="separator">›</span> <span class="current">Services</span>
+                </div>
+            </div>
+
+            <!-- Floating Features Bar -->
+            <div class="services-features-bar">
+                
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-user-tie"></i></div>
+                    <div class="feature-text">
+                        <h3>Expert Team</h3>
+                        <p>Skilled professionals with proven expertise</p>
+                    </div>
+                </div>
+
+                <div class="feature-divider"></div>
+
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-shield-halved"></i></div>
+                    <div class="feature-text">
+                        <h3>Quality Assurance</h3>
+                        <p>Premium quality products and global standards</p>
+                    </div>
+                </div>
+
+                <div class="feature-divider"></div>
+
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-headset"></i></div>
+                    <div class="feature-text">
+                        <h3>End-to-End Support</h3>
+                        <p>From consultation to maintenance</p>
+                    </div>
+                </div>
+
+                <div class="feature-divider"></div>
+
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-star"></i></div>
+                    <div class="feature-text">
+                        <h3>Customer Satisfaction</h3>
+                        <p>Our priority is your long-term happiness</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+    <!-- ========================================== -->
+<!--   OUR COMPREHENSIVE SERVICES CARDS SECTION  -->
+<!-- ========================================== -->
+<section class="comprehensive-services-section">
+    <div class="container">
+        <h4 class="section-subtitle text-green">WHAT WE OFFER</h4>
+        <h2 class="section-title text-black">Our Comprehensive Services</h2>
+        
+        <div class="services-grid">
+            {% for service in services %}
+            <div class="service-card">
+                <div class="service-img-wrapper">
+                    <img src="{{ service.image.url }}" alt="{{ service.title }}">
+                </div>
+                
+                <div class="service-card-content">
+                    <span class="service-step">{{ service.step_number }}</span>
+                    <h3 class="service-title">{{ service.title }}</h3>
+                    <p class="service-desc">{{ service.description }}</p>
+                    
+                    <!-- HARDCODED LINK: Add your desired URL here -->
+                    <a href="{% url 'contact' %}" class="learn-more-link">Learn More &rarr;</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+    <!-- ========================================== -->
+    <!--   READY TO MAKE THE SWITCH CTA SECTION      -->
+    <!-- ========================================== -->
+    <section class="switch-cta-section">
+        <div class="switch-container">
+            
+            <!-- Top Banner -->
+            <div class="switch-top-banner">
+                <div class="switch-text">
+                    <h2>Ready to Make the Switch?</h2>
+                    <p>Let our experts help you harness the power of the sun and save on energy costs.</p>
+                </div>
+                
+                <div class="switch-actions">
+                    <a href="{% url 'contact' %}" class="btn-green">Get a Free Consultation <i class="fas fa-chevron-right"></i></a>
+                    
+                    <div class="call-us-box">
+                        <div class="call-icon"><i class="fas fa-phone-alt"></i></div>
+                        <div class="call-info">
+                            <span>Call Us Now</span>
+                            <a href="tel:+919876543210">+91 98765 43210</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Features Bar -->
+            <div class="switch-bottom-bar">
+                
+                <div class="switch-feature">
+                    <div class="switch-feature-icon"><i class="fas fa-coins"></i></div>
+                    <div class="switch-feature-text">
+                        <h4>Save on Bills</h4>
+                        <p>Reduce electricity costs up to 80%</p>
+                    </div>
+                </div>
+
+                <div class="switch-feature-divider"></div>
+
+                <div class="switch-feature">
+                    <div class="switch-feature-icon"><i class="fas fa-leaf"></i></div>
+                    <div class="switch-feature-text">
+                        <h4>Eco-Friendly</h4>
+                        <p>Clean energy for a better tomorrow</p>
+                    </div>
+                </div>
+
+                <div class="switch-feature-divider"></div>
+
+                <div class="switch-feature">
+                    <div class="switch-feature-icon"><i class="fas fa-sun"></i></div>
+                    <div class="switch-feature-text">
+                        <h4>High Efficiency</h4>
+                        <p>Advanced technology for maximum output</p>
+                    </div>
+                </div>
+
+                <div class="switch-feature-divider"></div>
+
+                <div class="switch-feature">
+                    <div class="switch-feature-icon"><i class="fas fa-headset"></i></div>
+                    <div class="switch-feature-text">
+                        <h4>Reliable Support</h4>
+                        <p>We're here for you, always</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+      {% include 'footer.html' %}
+    <script src="{% static 'js/navigation.js' %}"></script>
+    <script src="{% static 'js/services/services.js' %}"></script>
+    <script src="{% static 'js/footer.js' %}"></script>
+</body>
+</html>

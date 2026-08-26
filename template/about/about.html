@@ -1,0 +1,214 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuetech Solar - About Hero</title>
+    <link rel="stylesheet" href="{% static 'css/navigation.css' %}">
+    <link rel="stylesheet" href="{% static 'css/about/about.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+     {% include 'navigation.html' %}
+
+    <section class="hero-about-wrapper">
+        
+        <!-- BACKGROUND IMAGE (Replace 'hero-bg.jpg' with your actual image file) -->
+        <img src="{% static 'assents/hero_home_page.png' %}" alt="Solar Panels Sunset" class="hero-bg-image">
+
+        <!-- Dark Gradient Overlay for Text Readability -->
+        <div class="hero-overlay"></div>
+
+        <!-- Main Content -->
+        <div class="hero-about-content">
+            
+            <div class="hero-text-area">
+                <h4 class="sub-heading">ABOUT US</h4>
+                <h1 class="main-heading">
+                    Driving Change with <br>
+                    <span class="highlight-text">Clean Energy</span>
+                </h1>
+                <p class="hero-description">
+                    Nuetech Solar is committed to building a sustainable future by delivering innovative, reliable, and cost-effective solar energy solutions.
+                </p>
+            </div>
+
+            <!-- Floating Stats Bar -->
+            <div class="stats-bar">
+                
+                <div class="stat-item">
+                    <div class="stat-icon"><i class="fas fa-dollar-sign"></i></div>
+                    <div class="stat-text">
+                        <h3>10+</h3>
+                        <p>Years of Experience</p>
+                    </div>
+                </div>
+
+                <div class="stat-divider"></div>
+
+                <div class="stat-item">
+                    <div class="stat-icon"><i class="fas fa-industry"></i></div>
+                    <div class="stat-text">
+                        <h3>500+</h3>
+                        <p>Projects Completed</p>
+                    </div>
+                </div>
+
+                <div class="stat-divider"></div>
+
+                <div class="stat-item">
+                    <div class="stat-icon"><i class="fas fa-users"></i></div>
+                    <div class="stat-text">
+                        <h3>250+</h3>
+                        <p>Happy Clients</p>
+                    </div>
+                </div>
+
+                <div class="stat-divider"></div>
+
+                <div class="stat-item">
+                    <div class="stat-icon"><i class="fas fa-medal"></i></div>
+                    <div class="stat-text">
+                        <h3>100%</h3>
+                        <p>Commitment to Quality</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+        <!-- ========================================== -->
+    <!--           WHO WE ARE SECTION                -->
+    <!-- ========================================== -->
+    <section class="who-we-are-section">
+        <div class="who-container">
+            
+            <!-- Left Side: Image (Replace src with your actual image file) -->
+            <div class="who-image-wrapper">
+                <img src="{% static 'assents/nuetech_about.png' %}" alt="Nuetech Solar Office Building" class="who-img">
+            </div>
+
+            <!-- Right Side: Text Content -->
+            <div class="who-content">
+                <h4 class="who-subheading">WHO WE ARE</h4>
+                <h2 class="who-heading">A Team of Innovators and <br> Sustainability Advocates</h2>
+                
+                <p class="who-description">
+                    At Nuetech Solar, we believe in harnessing the power of the sun to create a brighter, greener tomorrow. Our team of experts works passionately to deliver cutting-edge solar solutions tailored to meet the unique needs of our clients.
+                </p>
+
+                <!-- Checkmark List -->
+                <ul class="who-list">
+                    <li><i class="fas fa-check-circle"></i> Customer-centric approach</li>
+                    <li><i class="fas fa-check-circle"></i> High-quality & reliable solutions</li>
+                    <li><i class="fas fa-check-circle"></i> Advanced technology & innovation</li>
+                    <li><i class="fas fa-check-circle"></i> Sustainable & eco-friendly practices</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+        <!-- ========================================== -->
+    <!--       MISSION & VISION SECTION              -->
+    <!-- ========================================== -->
+    <section class="mission-vision-section">
+        
+        <div class="mission-vision-container">
+            <h4 class="section-subtitle text-green">OUR MISSION & VISION</h4>
+            
+            <div class="mission-vision-grid">
+                
+                <!-- Left Side: Mission -->
+                <div class="mv-text-col">
+                    <div class="mv-icon-circle">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3 class="mv-title">Our Mission</h3>
+                    <p class="mv-desc">
+                        To empower homes, businesses, and industries with sustainable solar energy solutions that drive a cleaner, greener, and more energy-independent world.
+                    </p>
+                </div>
+
+                <!-- Center: The Circled Image -->
+                <div class="mv-image-col">
+                    <!-- REPLACE 'mission-vision-center.jpg' WITH YOUR ACTUAL IMAGE FILE -->
+                    <img src="{% static 'assents/about_page_middle.png' %}" alt="Mission and Vision Graphic" class="mv-center-img">
+                </div>
+
+                <!-- Right Side: Vision -->
+                <div class="mv-text-col">
+                    <div class="mv-icon-circle">
+                        <i class="fas fa-globe-asia"></i>
+                    </div>
+                    <h3 class="mv-title">Our Vision</h3>
+                    <p class="mv-desc">
+                        To be a global leader in solar energy innovation, creating a lasting impact through clean energy, advanced technology, and exceptional service.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+    <!-- ========================================== -->
+    <!--    WHY CHOOSE NUETECH SOLAR SECTION         -->
+    <!-- ========================================== -->
+    <section class="why-choose-section">
+        <div class="why-container">
+            <h4 class="section-subtitle text-green">WHY CHOOSE NUETECH SOLAR?</h4>
+            
+            <div class="why-grid">
+                <!-- Card 1 -->
+                <div class="why-card">
+                    <div class="why-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h4>Expert Team</h4>
+                    <p>Skilled professionals with deep industry knowledge.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="why-card">
+                    <div class="why-icon">
+                        <i class="fas fa-shield-halved"></i>
+                    </div>
+                    <h4>Quality Assurance</h4>
+                    <p>We use top-quality materials & follow global standards.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="why-card">
+                    <div class="why-icon">
+                        <i class="fas fa-people-arrows"></i>
+                    </div>
+                    <h4>End-to-End Solutions</h4>
+                    <p>From consultation to installation & maintenance, we've got you covered.</p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="why-card">
+                    <div class="why-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h4>Sustainable Future</h4>
+                    <p>Our solutions help reduce carbon footprint and promote a greener planet.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+     {% include 'footer.html' %}
+    <script src="{% static 'js/navigation.js' %}"></script>
+    <script src="{% static 'js/about/about.js' %}"></script>
+     <script src="{% static 'js/footer.js' %}"></script>
+</body>
+</html>

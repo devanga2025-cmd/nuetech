@@ -1,0 +1,176 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers - Nuetech Solar</title>
+    <link rel="stylesheet" href="{% static 'css/navigation.css' %}">
+    <link rel="stylesheet" href="{% static 'css/career/career.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    {% include 'navigation.html' %}
+    <section class="careers-hero-wrapper">
+        
+        <!-- BACKGROUND IMAGE (Replace 'careers-bg.jpg' with your actual image file) -->
+        <img src="{% static 'career_page.png' %}" alt="Nuetech Solar Team Collaborating in Office" class="careers-bg-image">
+
+        <!-- Dark Gradient Overlay for Text Readability -->
+        <div class="careers-overlay"></div>
+
+        <!-- Main Content -->
+        <div class="careers-content">
+            
+            <div class="careers-text-area">
+                <h4 class="careers-subheading">CAREERS AT NUETECH SOLAR</h4>
+                <h1 class="careers-main-heading">
+                    Build Your Career.<br>
+                    <span class="highlight-text">Power the Future.</span>
+                </h1>
+                <p class="careers-description">
+                    Join a team of innovators, problem solvers, and change makers working towards a cleaner, greener tomorrow.
+                </p>
+
+                <!-- Button -->
+                <a href="{% url 'product' %}" class="btn-green careers-btn">Explore Open Positions <i class="fas fa-chevron-right"></i></a>
+            </div>
+
+        </div>
+    </section>
+    <!-- ========================================== -->
+<!--        CAREERS CONTENT (STATIC TOP)         -->
+<!-- ========================================== -->
+<section class="careers-content-section">
+    <div class="container">
+
+        <!-- Top 4 Static Benefits -->
+        <div class="top-benefits-grid">
+            <div class="top-benefit-card">
+                <div class="benefit-icon"><i class="fas fa-users"></i></div>
+                <div class="benefit-text">
+                    <h4>Meaningful Work</h4>
+                    <p>Contribute to real solutions for a sustainable future.</p>
+                </div>
+            </div>
+            <div class="top-benefit-card">
+                <div class="benefit-icon"><i class="fas fa-seedling"></i></div>
+                <div class="benefit-text">
+                    <h4>Growth Opportunities</h4>
+                    <p>Learn, grow, and advance in your career.</p>
+                </div>
+            </div>
+            <div class="top-benefit-card">
+                <div class="benefit-icon"><i class="fas fa-lightbulb"></i></div>
+                <div class="benefit-text">
+                    <h4>Innovation Driven</h4>
+                    <p>Work with the latest technology and industry experts.</p>
+                </div>
+            </div>
+            <div class="top-benefit-card">
+                <div class="benefit-icon"><i class="fas fa-handshake"></i></div>
+                <div class="benefit-text">
+                    <h4>Great Culture</h4>
+                    <p>Collaborate, respect, and celebrate together.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- More Than Just a Job Section -->
+        <div class="more-than-job-section">
+            <h4 class="section-subtitle text-green">WHY JOIN NUETECH SOLAR?</h4>
+            <h2 class="section-title text-black">More Than Just a Job</h2>
+            
+            <div class="job-video-layout">
+                <!-- Left: Video Image with Play Button -->
+                <div class="job-video-wrapper">
+                    <!-- Static video thumbnail -->
+                    <img src="{% static 'nuetech_about.png' %}" alt="Solar Panels Video Thumbnail" class="video-thumb">
+                    <div class="video-overlay-text">
+                        At Nuetech Solar, you're not just an employee – you're a part of a mission to power a cleaner planet.
+                    </div>
+                    <a href="https://www.youtube.com/watch?v=OETf5ZmYzEs" class="video-play-btn">
+                        <i class="fas fa-play"></i>
+                    </a>
+                </div>
+
+                <!-- Right: 4 Static Benefit Cards -->
+                <div class="job-benefits-grid">
+                    <div class="job-benefit-card">
+                        <div class="benefit-icon"><i class="fas fa-money-bill-wave"></i></div>
+                        <div>
+                            <h4>Competitive Salary</h4>
+                            <p>We value your skills and reward your contribution.</p>
+                        </div>
+                    </div>
+                    <div class="job-benefit-card">
+                        <div class="benefit-icon"><i class="fas fa-shield-alt"></i></div>
+                        <div>
+                            <h4>Health & Wellness</h4>
+                            <p>Your well-being is our priority.</p>
+                        </div>
+                    </div>
+                    <div class="job-benefit-card">
+                        <div class="benefit-icon"><i class="fas fa-graduation-cap"></i></div>
+                        <div>
+                            <h4>Learning & Development</h4>
+                            <p>Continuous training and skill enhancement.</p>
+                        </div>
+                    </div>
+                    <div class="job-benefit-card">
+                        <div class="benefit-icon"><i class="fas fa-balance-scale"></i></div>
+                        <div>
+                            <h4>Work-Life Balance</h4>
+                            <p>Flexible work culture that respects your life.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!--   CURRENT OPPORTUNITIES (DYNAMIC SECTION)   -->
+        <!-- ========================================== -->
+        <div class="current-opportunities-section">
+            <h4 class="section-subtitle text-green">OPEN POSITIONS</h4>
+            <div class="section-header-row">
+                <h2 class="section-title text-black">Current Opportunities</h2>
+                <!-- Static View All Button -->
+                <a href="/all-jobs/" class="btn-outline">View All Jobs &rarr;</a>
+            </div>
+
+            <div class="jobs-table">
+                <!-- Loop through dynamic jobs -->
+                {% for job in jobs %}
+                <div class="job-row">
+                    <div class="job-title-cell">{{ job.job_title }}</div>
+                    <div class="job-dept-cell">{{ job.department }}</div>
+                    <div class="job-location-cell">
+                        <i class="fas fa-map-marker-alt"></i> {{ job.location }}
+                    </div>
+                    <div class="job-type-cell">{{ job.job_type }}</div>
+                    <div class="job-action-cell">
+                        <!-- Static Apply Now link -->
+                        <a href="/apply/" class="btn-apply">Apply Now</a>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="job-row">
+                    <div class="job-title-cell" style="color: #999;">No current openings available.</div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+</section>
+     {% include 'footer.html' %}
+    <script src="{% static 'js/navigation.js' %}"></script>
+    <script src="{% static 'js/career/career.js' %}"></script>
+    <script src="{% static 'js/footer.js' %}"></script>
+</body>
+</html>

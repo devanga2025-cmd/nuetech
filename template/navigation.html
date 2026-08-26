@@ -1,0 +1,32 @@
+{% load static %}
+<header class="navbar-container">
+    <div class="navbar-inner">
+        <div class="logo-section">
+            <a href="{% url 'home' %}">
+                <img src="{% static 'assents/logo_new.png' %}" alt="Nuetech Solar Logo" class="logo-img">
+            </a>
+        </div>
+
+        <nav class="nav-links" id="nav-links">
+            <ul>
+                <li><a href="{% url 'home' %}" class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}">Home</a></li>
+                <li><a href="{% url 'about' %}" class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}">About</a></li>
+                <li><a href="{% url 'product' %}" class="{% if request.resolver_match.url_name == 'product' %}active{% endif %}">Product</a></li>
+                <li><a href="{% url 'gallery' %}" class="{% if request.resolver_match.url_name == 'gallery' %}active{% endif %}">Gallery</a></li>
+                <li><a href="{% url 'services' %}" class="{% if request.resolver_match.url_name == 'services' %}active{% endif %}">Services</a></li>
+                <li><a href="{% url 'portfolio' %}" class="{% if request.resolver_match.url_name == 'portfolio' %}active{% endif %}">Portfolio</a></li>
+                <li><a href="{% url 'career' %}" class="{% if request.resolver_match.url_name == 'career' %}active{% endif %}">Career</a></li>
+                <li><a href="{% url 'contact' %}" class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-right">
+            <div class="cta-section">
+                <a href="{% url 'quote' %}" class="quote-btn">Get a Quote <span class="arrow">&gt;</span></a>
+            </div>
+            <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </div>
+</header>
